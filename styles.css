@@ -29,8 +29,10 @@
 }
 
 .error {
-    color: #F56C6C;
-    /* Additional styling */
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    width: 100%;
 }
 
 .hidden {

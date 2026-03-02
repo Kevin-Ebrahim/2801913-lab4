@@ -2,6 +2,7 @@ const countryInput = document.getElementById('country-input');
 const searchBtn = document.getElementById('search-btn');
 const loadingSpinner = document.getElementById('loading-spinner');
 const countryInfo = document.getElementById('country-info');
+const countryCard = document.getElementById('country-info');
 const borderingCountries = document.getElementById('bordering-countries');
 const errorMessage = document.getElementById('error-message');
 
@@ -14,18 +15,22 @@ function setLoading(isLoading) {
 }
 
 function showError(message) {
-  errorMessage.textContent = message;
-  errorMessage.classList.remove('hidden');
+  borderingCountries.classList.add('hidden');
+  
+  countryInfo.classList.remove('hidden');
+  
+  countryInfo.innerHTML = `<p class="error">${message}</p>`;
 }
 
 function clearError() {
-  errorMessage.textContent = '';
-  errorMessage.classList.add('hidden');
+  countryInfo.innerHTML = '';
 }
 
 function clearUI() {
   countryInfo.innerHTML = '';
   borderingCountries.innerHTML = '';
+  countryInfo.classList.remove('hidden');
+  borderingCountries.classList.remove('hidden');
 }
 
 async function searchCountry(countryName) {
@@ -45,7 +50,8 @@ async function searchCountry(countryName) {
     const response = await fetch(`https://restcountries.com/v3.1/name/${encodeURIComponent(name)}`);
 
     if (!response.ok) {
-      throw new Error('Country not found. Try another name.');
+        countryCard.classList.add('hidden');
+        throw new Error('Country not found. Try another name.');
     }
 
     const data = await response.json();
