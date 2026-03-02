@@ -18,14 +18,13 @@
     padding: 100px;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     background-color: #909399;
-    border: ;
 }
 
 .border-grid {
-    display: grid;    
+    display: grid; 
     border: 3px solid black;
     padding: 10px;
-    font-size: 30px;
+    background-color: #909399;
     text-align: center;
 }
 
